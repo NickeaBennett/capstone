@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_030809) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_01_192207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_030809) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.text "project_description"
+    t.string "slug"
+    t.string "image_url"
+    t.string "project_website_url"
+    t.string "project_discord_url"
+    t.string "project_twitter_url"
+    t.string "project_opensea_url"
+    t.integer "project_max_supply"
+    t.decimal "project_unit_price_eth"
+    t.datetime "project_sale_date"
+    t.string "minting_contract_address"
+    t.string "project_blockchain"
+    t.boolean "is_verified"
+    t.boolean "is_premium"
+    t.boolean "is_featured"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "score"
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_reviews_on_project_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -63,4 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_030809) do
   end
 
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "projects", "users"
+  add_foreign_key "reviews", "projects"
+  add_foreign_key "reviews", "users"
 end
