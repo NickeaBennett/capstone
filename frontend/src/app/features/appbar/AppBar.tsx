@@ -22,9 +22,9 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
-  const accessToken = useSelector((state : RootState) => state.session.accessToken);
-  const loading = useSelector((state : RootState) => state.session.loading);
-  const currentUser = useSelector((state : RootState) => state.session.currentUser);
+  const accessToken = useSelector((state: RootState) => state.session.accessToken);
+  const loading = useSelector((state: RootState) => state.session.loading);
+  const currentUser = useSelector((state: RootState) => state.session.currentUser);
 
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -62,52 +62,52 @@ const ResponsiveAppBar = () => {
   let sessionLinks;
   if (accessToken) {
     sessionLinks = <Box sx={{ flexGrow: 0 }}>
-    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-      <Typography marginRight={2} marginTop={1} textAlign="center">{currentUser?.email}</Typography>
-      <Tooltip title="Open settings">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-        </IconButton>
-      </Tooltip>
-    </Box>
-    <Menu
-      sx={{ mt: '45px' }}
-      id="menu-appbar"
-      anchorEl={anchorElUser}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={Boolean(anchorElUser)}
-      onClose={handleCloseUserMenu}
-    >
+      <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+        <Typography marginRight={2} marginTop={1} textAlign="center">{currentUser?.email}</Typography>
+        <Tooltip title="Open settings">
+          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          </IconButton>
+        </Tooltip>
+      </Box>
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
         <MenuItem onClick={(event) => handleUpdateProfileAccount(event)}>
           <Typography textAlign="center">Update Profile</Typography>
         </MenuItem>
         <MenuItem onClick={(event) => handleLogout(event)}>
           <Typography textAlign="center">Logout</Typography>
         </MenuItem>
-    </Menu>
-  </Box>;
+      </Menu>
+    </Box>;
   } else if (!accessToken && !loading) {
     sessionLinks = <>
-    <Button
-      onClick={(event) => handleNavigate("/signup", event)}
-      sx={{ my: 2, color: 'white', display: 'block' }}
-    >
-      Create Account
-  </Button>
-  <Button
-    onClick={(event) => handleNavigate("/login", event)}
-    sx={{ my: 2, color: 'white', display: 'block' }}
-  >
-    Login
-  </Button>
+      <Button
+        onClick={(event) => handleNavigate("/signup", event)}
+        sx={{ my: 2, color: 'white', display: 'block' }}
+      >
+        Create Account
+      </Button>
+      <Button
+        onClick={(event) => handleNavigate("/login", event)}
+        sx={{ my: 2, color: 'white', display: 'block' }}
+      >
+        Login
+      </Button>
     </>
   }
 
@@ -122,7 +122,7 @@ const ResponsiveAppBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            WishList
+            ViralNFT.art
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -167,15 +167,15 @@ const ResponsiveAppBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            Wishlist
+            ViralNFT.art
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                onClick={(event) => handleNavigate("/", event)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Home
-              </Button>
+            <Button
+              onClick={(event) => handleNavigate("/", event)}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Home
+            </Button>
           </Box>
           {sessionLinks}
         </Toolbar>

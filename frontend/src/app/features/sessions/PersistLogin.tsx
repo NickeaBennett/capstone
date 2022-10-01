@@ -5,9 +5,12 @@ import { RootState } from '../../store';
 import { refreshAccessToken } from './sessionSlice';
 
 function PersistLogin() {
+  // const loading = false;
+  // const accessToken = true;
+  // const refreshToken = null;
   const loading = useSelector((state: RootState) => state.session.loading);
-  const accessToken = useSelector((state : RootState) => state.session.accessToken);
-  const refreshToken = useSelector((state : RootState) => state.session.refreshToken);
+  const accessToken = useSelector((state: RootState) => state.session.accessToken);
+  const refreshToken = useSelector((state: RootState) => state.session.refreshToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
