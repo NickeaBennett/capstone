@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :tags
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   root 'pages#home'
 
   use_doorkeeper
   devise_for :users
+  resources :tags
   resources :projects
 
   draw :api

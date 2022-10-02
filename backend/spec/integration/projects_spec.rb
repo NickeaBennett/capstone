@@ -17,7 +17,7 @@ describe 'Projects API' do # rubocop:disable Metrics/BlockLength
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, required: true,
                 description: 'Authorization token'
-      response '200', 'books found' do
+      response '200', 'projects found' do
         let(:Authorization) { @token }
         run_test!
       end

@@ -8,7 +8,7 @@ module Api
       # GET /projects or /projects.json
       def index
         @projects = Project.all
-        render json: @projects
+        render json: serializer(projects, options)
         # render json: ProjectSerializer.new(projects).serialized_json
       end
 
@@ -31,7 +31,8 @@ module Api
 
       # POST /projects or /projects.json
       def create
-        @project = Project.new(project_params)
+        @project = Project.new(project_params.except(:tags))
+        create_or_delete_project_tags(@project, params[:project][:tags],)
 
         respond_to do |format|
           if @project.save
@@ -46,8 +47,9 @@ module Api
 
       # PATCH/PUT /projects/1 or /projects/1.json
       def update
+        create_or_delete_project_tags(@project, params[:project][:tags],)
         respond_to do |format|
-          if @project.update(project_params)
+          if @project.update(project_params.except(:tags))
             format.html { redirect_to api_v1_project_url(@project), notice: 'Projects was successfully updated.' }
             format.json { render :show, status: :ok, location: @project }
           else
@@ -68,6 +70,15 @@ module Api
       end
 
       private
+
+      def create_or_delete_project_tags(project, tags)
+        project.taggables.destroy_all
+        tags = tags.strip.split(',')
+        tags.each do |tag|
+          project.tags << Tag.find_or_create_by(name: tag)
+        end
+      
+      end
 
       # Use callbacks to share common setup or constraints between actions.
       def set_project

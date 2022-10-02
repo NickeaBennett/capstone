@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
     belongs_to :user
     has_many :reviews, dependent: :destroy
+    has_many :taggables, dependent: :destroy
+    has_many :tags, through: :taggables
 
     before_create :slugify
 

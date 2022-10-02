@@ -6,12 +6,13 @@ namespace :api do
       post '/', to: 'registrations#create', as: :user_registration
       patch '/', to: 'registrations#update_profile', as: :user_update_profile
     end
-    resources :projects, param: :slugify
+    # resources :projects, param: :slugify
+    resources :projects
     resources :reviews, only: [:create, :update, :destroy]
 
-    namespace :android do
-      resources :projects
-    end
+    # namespace :android do
+    #   resources :projects
+    # end
     get '/users/me', to: 'users#me'
   end
 end
