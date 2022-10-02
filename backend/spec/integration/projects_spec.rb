@@ -3,17 +3,17 @@
 require 'swagger_helper'
 require 'rails_helper'
 
-# Describe the books API
-describe 'Books API' do # rubocop:disable Metrics/BlockLength
+# Describe the projects API
+describe 'Projects API' do # rubocop:disable Metrics/BlockLength
   before do
     @token = "Bearer #{create(:doorkeeper_access_token).token}"
-    @book = create(:book).attributes
+    @project = create(:project).attributes
   end
-  # GET /books
-  # Get all books
-  path '/api/v1/books' do
-    get 'Get all books' do
-      tags 'Books'
+  # GET /projects
+  # Get all projects
+  path '/api/v1/projects' do
+    get 'Get all projects' do
+      tags 'Projects'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, required: true,
                 description: 'Authorization token'
@@ -28,62 +28,62 @@ describe 'Books API' do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  # GET /books/:id
-  # Get a book by id
-  path '/api/v1/books/{id}' do
-    get 'Get a book' do
-      tags 'Books'
+  # GET /projects/:id
+  # Get a project by id
+  path '/api/v1/projects/{id}' do
+    get 'Get a project' do
+      tags 'Projects'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, required: true,
                 description: 'Authorization token'
       parameter name: :id, in: :path, type: :string, required: true,
-                description: 'ID of the book'
-      response '200', 'book found' do
+                description: 'ID of the project'
+      response '200', 'project found' do
         let(:Authorization) { @token }
-        let(:id) { @book['id'] }
+        let(:id) { @project['id'] }
         run_test!
       end
-      response '404', 'book not found' do
+      response '404', 'project not found' do
         let(:Authorization) { @token }
         let(:id) { 'invalid' }
         run_test!
       end
       response '401', 'unauthorized' do
         let(:Authorization) { 'invalid' }
-        let(:id) { @book['id'] }
+        let(:id) { @project['id'] }
         run_test!
       end
     end
   end
 
-  # POST /books
-  # Create a book
-  path '/api/v1/books' do
-    post 'Create a book' do
-      tags 'Books'
+  # POST /projects
+  # Create a project
+  path '/api/v1/projects' do
+    post 'Create a project' do
+      tags 'Projects'
       consumes 'application/json', 'application/xml'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, required: true,
                 description: 'Authorization token'
-      parameter name: :book, in: :body, schema: {
+      parameter name: :project, in: :body, schema: {
         type: :object,
         properties: {
-          book: {
+          project: {
 
-            title: { type: :string },
-            body: { type: :string }
+            project_name: { type: :string },
+            project_description: { type: :string }
           }
         },
         required: %w[title body]
       }
       response '302', 'redirected' do
         let(:Authorization) { @token }
-        let(:book) { { title: 'The Hobbit', body: 'A great book' } }
+        let(:project) { { project_name: 'Bored Apes', body: 'A great project' } }
         run_test!
       end
       response '401', 'unauthorized' do
         let(:Authorization) { 'invalid' }
-        let(:book) { { book: attributes_for(:book) } }
+        let(:project) { { project: attributes_for(:project) } }
         run_test!
       end
     end
