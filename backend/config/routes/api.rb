@@ -6,7 +6,8 @@ namespace :api do
       post '/', to: 'registrations#create', as: :user_registration
       patch '/', to: 'registrations#update_profile', as: :user_update_profile
     end
-    resources :projects
+    resources :projects, param: :slugify
+    resources :reviews, only: [:create, :update, :destroy]
 
     namespace :android do
       resources :projects

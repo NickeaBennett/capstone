@@ -4,42 +4,42 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/books":
+  "/api/v1/projects":
     get:
-      summary: Get all books
+      summary: Get all projects
       tags:
-      - Books
+        - Projects
       security:
-      - Bearer: []
+        - Bearer: []
       parameters:
-      - name: Authorization
-        in: header
-        required: true
-        description: Authorization token
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: Authorization token
+          schema:
+            type: string
       responses:
-        '200':
-          description: books found
-        '401':
+        "200":
+          description: projects found
+        "401":
           description: unauthorized
     post:
-      summary: Create a book
+      summary: Create a project
       tags:
-      - Books
+        - Projects
       security:
-      - Bearer: []
+        - Bearer: []
       parameters:
-      - name: Authorization
-        in: header
-        required: true
-        description: Authorization token
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: Authorization token
+          schema:
+            type: string
       responses:
-        '302':
+        "302":
           description: redirected
-        '401':
+        "401":
           description: unauthorized
       requestBody:
         content:
@@ -53,8 +53,8 @@ paths:
                   body:
                     type: string
               required:
-              - title
-              - body
+                - title
+                - body
           application/xml:
             schema:
               type: object
@@ -65,37 +65,37 @@ paths:
                   body:
                     type: string
               required:
-              - title
-              - body
-  "/api/v1/books/{id}":
+                - title
+                - body
+  "/api/v1/projects/{id}":
     get:
-      summary: Get a book
+      summary: Get a project
       tags:
-      - Books
+        - Projects
       security:
-      - Bearer: []
+        - Bearer: []
       parameters:
-      - name: Authorization
-        in: header
-        required: true
-        description: Authorization token
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        description: ID of the book
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          required: true
+          description: Authorization token
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          description: ID of the book
+          schema:
+            type: string
       responses:
-        '200':
-          description: book found
-        '404':
-          description: book not found
-        '401':
+        "200":
+          description: project found
+        "404":
+          description: project not found
+        "401":
           description: unauthorized
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+  - url: https://{defaultHost}
+    variables:
+      defaultHost:
+        default: www.example.com

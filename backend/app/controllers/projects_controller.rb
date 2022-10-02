@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     include ApplicationHelper
-    before_action :set_project, only: %i[show edit update destroy]
+    before_action :set_project, only: %i[show update destroy]
     before_action :authenticate_user!
 
       # GET /projects or /projects.json
@@ -9,7 +9,10 @@ class ProjectsController < ApplicationController
     end
 
     # GET /projects/1 or /projects/1.json
-    def show; end
+   def show
+        @project = Project.find(params[:id])
+        render json: @project
+    end
 
     # GET /projects/new
     def new
@@ -17,7 +20,7 @@ class ProjectsController < ApplicationController
     end
 
     # GET /projects/1/edit
-    def edit; end
+    # def edit; end
 
     # POST /projects or /projects.json
     def create
@@ -68,6 +71,7 @@ class ProjectsController < ApplicationController
     def project_params
         params.require(:project).permit(
             :project_name, 
+            :slug,
             :project_description, 
             :project_website_url, 
             :project_discord_url, 
