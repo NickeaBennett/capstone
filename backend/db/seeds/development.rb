@@ -56,4 +56,3 @@ review = Review.create([
     user_id: 1
   }
 ])
-     

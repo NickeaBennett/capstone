@@ -4,7 +4,6 @@ class Project < ApplicationRecord
 
     before_create :slugify
 
-
     def slugify
         self.slug = self.project_name.parameterize
     end

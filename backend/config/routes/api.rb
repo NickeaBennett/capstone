@@ -6,10 +6,10 @@ namespace :api do
       post '/', to: 'registrations#create', as: :user_registration
       patch '/', to: 'registrations#update_profile', as: :user_update_profile
     end
-    resources :books
+    resources :projects
 
     namespace :android do
-      resources :books
+      resources :projects
     end
     get '/users/me', to: 'users#me'
   end
