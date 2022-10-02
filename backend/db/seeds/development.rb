@@ -2,12 +2,22 @@ if Doorkeeper::Application.count.zero?
   Doorkeeper::Application.create!(name: 'React Client', redirect_uri: '', scopes: '')
 end
 
-User.first_or_create(email: 'nickea@example.com',
-                     password: 'password',
-                     password_confirmation: 'password',
-                     role: User.roles[:admin])
+user = User.first_or_create([
+  {
+    email: 'nickea@example.com',
+    password: 'password',
+    password_confirmation: 'password',
+    role: User.roles[:admin]
+  },
+  {
+    email: 'test@example.com',
+    password: 'password',
+    password_confirmation: 'password',
+    role: User.roles[:user]
+  }
+])
 
-project = Project.create([
+project = Project.first_or_create([
   { 
     project_name: 'Bored Apes',
     project_description: 'Bored Apes nft collection',
@@ -40,19 +50,33 @@ project = Project.create([
   }
 ])
 
-review = Review.create([
+review = Review.first_or_create([
   {
     title: 'Bored Apes are the best',
     description: 'Bored Apes are the best',
-    score: 5,
-    project_id: 1,
-    user_id: 1
+    score: 4,
+    user_id: 1,
+    project_id: 1
   },
   {
     title: 'CryptoPunks are the best',
     description: 'CryptoPunks are the best',
+    score: 3,
+    user_id: 1,
+    project_id: 2
+  },
+  {
+    title: 'Bored Apes are the best',
+    description: 'Bored Apes are the best',
     score: 5,
-    project_id: 2,
-    user_id: 1
+    user_id: 2,
+    project_id: 1
+  },
+  {
+    title: 'CryptoPunks are the best',
+    description: 'CryptoPunks are the best',
+    score: 4,
+    user_id: 2,
+    project_id: 2
   }
 ])

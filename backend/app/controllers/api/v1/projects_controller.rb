@@ -8,11 +8,12 @@ module Api
       # GET /projects or /projects.json
       def index
         @projects = Project.all
-        render json: serializer(projects, options)
+        render json: serializer(projects, options).serialized_json
         # render json: ProjectSerializer.new(projects).serialized_json
       end
 
       # GET /projects/1 or /projects/1.json
+      # GET /projects/:slug or /projects/:slug.json
       def show
         project = Project.find_by(slug: params[:slug])
         render json: @project
@@ -102,6 +103,9 @@ module Api
           :minting_contract_address, 
           :project_blockchain
         )
+      end
+      def options
+        @options ||= { include: %i[reviews tags] }
       end
     end
   end

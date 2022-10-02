@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
     def project_params
         params.require(:project).permit(
             :slug,
-            :tags
+            :tags,
             :project_name, 
             :project_description, 
             :project_website_url, 

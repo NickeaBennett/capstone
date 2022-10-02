@@ -8,7 +8,7 @@ namespace :api do
     end
     # resources :projects, param: :slugify
     resources :projects
-    resources :reviews, only: [:create, :update, :destroy]
+    resources :reviews, only: [:create, :destroy]
 
     # namespace :android do
     #   resources :projects
