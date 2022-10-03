@@ -1,8 +1,17 @@
-# Doorkeeper Starter Template
-Repository for a doorkeeper backend. To be used as a template for projects that need a Ruby on Rails API backend
+# ViralNft.art
+
+A flatiron school capstone project
 
 ## Technologies Used
+
 - Backend
+
   - Ruby On Rails
   - Devise
   - Doorkeeper
+
+- Frontend
+  - React
+  - Redux
+  - Typescript
+  - Material UI

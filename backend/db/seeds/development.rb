@@ -21,7 +21,7 @@ project = Project.first_or_create([
   { 
     project_name: 'Bored Apes',
     project_description: 'Bored Apes nft collection',
-    image_url: "https://images.app.goo.gl/8CHFdA4uWemW5EGw8",
+    image_url: "https://cdn.pixabay.com/photo/2022/02/18/16/09/ape-7020995_960_720.png",
     project_website_url: 'https://boredapeyachtclub.com/',
     project_discord_url: 'https://discord.com/invite/boredapeyachtclub',
     project_twitter_url: 'https://twitter.com/boredapeyacht',
@@ -36,7 +36,7 @@ project = Project.first_or_create([
   { 
     project_name: 'CryptoPunks',
     project_description: 'CryptoPunks nft collection',
-    image_url: 'https://images.app.goo.gl/SfjL4EDLupQgvpww6',
+    image_url: 'https://cdn.pixabay.com/photo/2022/02/23/15/56/technology-7030913_960_720.png',
     project_website_url: 'https://www.larvalabs.com/cryptopunks',  
     project_discord_url: 'https://discord.com/invite/cryptopunks',
     project_twitter_url: 'https://twitter.com/cryptopunksnot',

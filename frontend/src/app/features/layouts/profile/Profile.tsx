@@ -1,16 +1,18 @@
-import { useSelector } from "react-redux"
-import { RootState } from "../../store"
+import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
-
-function Dashboard() {
+function Profile() {
   const currentUser = useSelector((state: RootState) => state.session.currentUser)
   const accessToken = useSelector((state: RootState) => state.session.accessToken)
   const refreshToken = useSelector((state: RootState) => state.session.refreshToken)
+
   return (
-    <section>
-      <h1>Dashboard</h1>
-      <ul> 
-        <li>Current User
+    <Box>
+      <h1>Profile</h1>
+      <ul>
+        <li>
+          Current User
           <ul>
             <li>Id: {currentUser?.id}</li>
             <li>Email: {currentUser?.email}</li>
@@ -21,8 +23,8 @@ function Dashboard() {
         <li>Access Token: {accessToken}</li>
         <li>Refresh Token: {refreshToken}</li>
       </ul>
-    </section>
-  )
+    </Box>
+  );
 }
 
-export default Dashboard
+export default Profile;

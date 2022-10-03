@@ -92,6 +92,7 @@ module Api
         params.require(:project).permit(
           :project_name, 
           :slug,
+          :tags,
           :project_description, 
           :project_website_url, 
           :project_discord_url, 
