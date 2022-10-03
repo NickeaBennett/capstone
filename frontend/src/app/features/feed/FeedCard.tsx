@@ -31,7 +31,7 @@ const FeedCard = (props: Project) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.project_name}
+        project_name={props.project_name}
         subheader="September 14, 2016"
       />
       <CardMedia

@@ -14,6 +14,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import React from "react";
+// import Profile from "../profile/Profile";
 
 function SideBar() {
   return (
@@ -36,7 +37,7 @@ function SideBar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/">
+          <ListItemButton component="a" href="/profile">
             <ListItemIcon>
               <InsertEmoticon />
             </ListItemIcon>

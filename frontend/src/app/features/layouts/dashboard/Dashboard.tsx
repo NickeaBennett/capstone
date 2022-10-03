@@ -20,7 +20,6 @@ function Dashboard() {
         <Feed />
         <RightBar />
       </Stack>
-      <h1>Dashboard</h1>
       <ul>
         <li>Current User
           <ul>
