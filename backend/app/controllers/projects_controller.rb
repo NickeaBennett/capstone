@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
     include ApplicationHelper
-    before_action :set_project, only: %i[show update destroy]
+    before_action :set_project, only: %i[show edit update destroy]
     before_action :authenticate_user!
+    # before_action :is_admin?
 
       # GET /projects or /projects.json
     def index
@@ -9,10 +12,7 @@ class ProjectsController < ApplicationController
     end
 
     # GET /projects/1 or /projects/1.json
-   def show
-        @project = Project.find(params[:id])
-        render json: @project
-    end
+    def show; end
 
     # GET /projects/new
     def new
@@ -20,33 +20,33 @@ class ProjectsController < ApplicationController
     end
 
     # GET /projects/1/edit
-    # def edit; end
+    def edit; end
 
     # POST /projects or /projects.json
     def create
         @project = Project.new(project_params)
 
         respond_to do |format|
-        if @project.save
-            format.html { redirect_to project_url(@project), notice: 'Project was successfully created.' }
-            format.json { render :show, status: :created, location: @project }
-        else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @project.errors, status: :unprocessable_entity }
-        end
+            if @project.save
+                format.html { redirect_to project_url(@project), notice: 'Project was successfully created.' }
+                format.json { render :show, status: :created, location: @project }
+            else
+                format.html { render :new, status: :unprocessable_entity }
+                format.json { render json: @project.errors, status: :unprocessable_entity }
+            end
         end
     end
 
     # PATCH/PUT /project/1 or /project/1.json
     def update
         respond_to do |format|
-        if @project.update(project_params)
-            format.html { redirect_to project_url(@project), notice: 'Project was successfully updated.' }
-            format.json { render :show, status: :ok, location: @project }
-        else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @project.errors, status: :unprocessable_entity }
-        end
+            if @project.update(project_params)
+                format.html { redirect_to project_url(@project), notice: 'Project was successfully updated.' }
+                format.json { render :show, status: :ok, location: @project }
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+                format.json { render json: @project.errors, status: :unprocessable_entity }
+            end
         end
     end
 
@@ -55,8 +55,8 @@ class ProjectsController < ApplicationController
         @project.destroy
 
         respond_to do |format|
-        format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-        format.json { head :no_content }
+            format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+            format.json { head :no_content }
         end
     end
 
@@ -71,7 +71,6 @@ class ProjectsController < ApplicationController
     def project_params
         params.require(:project).permit(
             :slug,
-            :tags,
             :project_name, 
             :project_description, 
             :project_website_url, 

@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   root 'pages#home'
-  # root 'projects#index'
 
   use_doorkeeper
   devise_for :users
-  resources :tags
   resources :projects
+  resources :reviews
 
   draw :api
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
