@@ -3,7 +3,7 @@
 class ProjectsController < ApplicationController
     include ApplicationHelper
     before_action :set_project, only: %i[show edit update destroy]
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     # before_action :is_admin?
 
       # GET /projects or /projects.json

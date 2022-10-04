@@ -14,10 +14,27 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { IProject } from "../../../types/data";
+import { useState } from "react";
+import Axios from "axios";
 
 import React from "react";
 
 const FeedCard = () => {
+  const [getProject, setProject] = useState([]);
+  // fetch("/projects")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
+
+  Axios.get("/projects")
+    .then((response) => {
+      setProject(response.data.projects);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
