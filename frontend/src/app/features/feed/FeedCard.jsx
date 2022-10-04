@@ -17,7 +17,7 @@ import { IProject } from "../../../types/data";
 
 import React from "react";
 
-const FeedCard = (props: IProject) => {
+const FeedCard = () => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
