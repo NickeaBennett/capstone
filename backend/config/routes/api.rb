@@ -10,9 +10,6 @@ namespace :api do
     resources :projects
     resources :reviews, only: [:create, :destroy]
 
-    # namespace :android do
-    #   resources :projects
-    # end
     get '/users/me', to: 'users#me'
   end
 end

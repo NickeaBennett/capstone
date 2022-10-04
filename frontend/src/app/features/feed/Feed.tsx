@@ -2,12 +2,11 @@ import React from "react";
 import { Box } from "@mui/material";
 import FeedCard from "./FeedCard";
 import { useState, useEffect } from "react";
-import ProjectForm from "../forms/ProjectForm"
-import { Project } from "../../../types/data";
+import { IProject } from "../../../types/data";
 import axios from "axios";
 
-const Feed = () => {
-  const [projects, setProjects] = useState<Project[]>([])
+export const Feed = () => {
+  const [projects, setProjects] = useState<IProject[]>([])
   const [isUpdate, setUpdate] = useState<boolean>(false)
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const Feed = () => {
     }
   }
 
-  const updateFeed = (project: Project) => {
+  const updateFeed = (project: IProject) => {
     const _projects = projects;
     _projects.unshift(project);
     setProjects(_projects);
@@ -39,8 +38,9 @@ const Feed = () => {
 
   return (
     <Box flex={4} p={2}>
+      {/* Fix update feed and project form */}
       {/* <ProjectForm updateFeed={updateFeed} /> */}
-      {projects.map((project: Project) => (
+      {projects.map((project: IProject) => (
         <FeedCard
           key={project.id}
           project_name={project.project_name}
@@ -58,7 +58,7 @@ const Feed = () => {
         />
       ))}
     </Box>
-  );
+  )
 }
 
-export default Feed;
+

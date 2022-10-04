@@ -1,4 +1,4 @@
-export interface Project {
+export interface IProject {
     id?: number;
     project_name: string;
     project_description: string;
@@ -7,10 +7,10 @@ export interface Project {
     project_discord_url: string;
     project_twitter_url: string;
     project_opensea_url: string;
-    project_max_supply: number;
-    project_sale_date: number;
-    project_unit_price_eth: number;
-    minting_contract_address: number;
-    project_blockchain: number;
+    project_max_supply: string;
+    project_sale_date: string;
+    project_unit_price_eth: string;
+    minting_contract_address: string;
+    project_blockchain: string;
 }
 

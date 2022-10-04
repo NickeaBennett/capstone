@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createUserWithEmailAndPassword, getCurrentUser, loginWithEmailAndPassword, logoutUserWithToken, requestAccessTokenWithRefreshToken, updateUserProfile, createProject } from "../../api/sessionAPI";
+import { createUserWithEmailAndPassword, getCurrentUser, loginWithEmailAndPassword, logoutUserWithToken, requestAccessTokenWithRefreshToken, updateUserProfile } from "../../api/sessionAPI";
 import { RootState, AppThunk } from "../../store";
 
 

@@ -13,11 +13,11 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Project } from "../../../types/data";
+import { IProject } from "../../../types/data";
 
 import React from "react";
 
-const FeedCard = (props: Project) => {
+const FeedCard = (props: IProject) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader

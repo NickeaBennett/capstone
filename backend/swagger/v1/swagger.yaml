@@ -47,26 +47,26 @@ paths:
             schema:
               type: object
               properties:
-                book:
-                  title:
+                project:
+                  project_name:
                     type: string
-                  body:
+                  project_description:
                     type: string
               required:
-                - title
-                - body
+                - project_name
+                - project_description
           application/xml:
             schema:
               type: object
               properties:
-                book:
-                  title:
+                project:
+                  project_name:
                     type: string
-                  body:
+                  project_description:
                     type: string
               required:
-                - title
-                - body
+                - project_name
+                - project_description
   "/api/v1/projects/{id}":
     get:
       summary: Get a project
@@ -84,7 +84,7 @@ paths:
         - name: id
           in: path
           required: true
-          description: ID of the book
+          description: ID of the project
           schema:
             type: string
       responses:
