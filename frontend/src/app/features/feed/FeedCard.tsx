@@ -31,15 +31,14 @@ const FeedCard = (props: Project) => {
             <MoreVertIcon />
           </IconButton>
         }
-        project_name={props.project_name}
+        title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
       />
       <CardMedia
         component="img"
-        height="10%"
-        width="10%"
+        height="20%"
         image="https://cdn.pixabay.com/photo/2022/02/18/16/09/ape-7020995_960_720.png"
-        alt="NFT"
+        alt="Bored Ape NFT"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

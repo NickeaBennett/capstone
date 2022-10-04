@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@mui/material";
 import FeedCard from "./FeedCard";
 import { useState, useEffect } from "react";
-// import { ProjectForm } from "../forms/ProjectForm";
 import ProjectForm from "../forms/ProjectForm"
 import { Project } from "../../../types/data";
 import axios from "axios";
@@ -39,8 +38,8 @@ const Feed = () => {
   }
 
   return (
-    <Box flex={2} p={2}>
-      <ProjectForm updateFeed={updateFeed} />
+    <Box flex={4} p={2}>
+      {/* <ProjectForm updateFeed={updateFeed} /> */}
       {projects.map((project: Project) => (
         <FeedCard
           key={project.id}

@@ -1,6 +1,6 @@
 # ViralNft.art
 
-A flatiron school capstone project. This is a web application that allows users to promote NFTs. Users can also rate and comment on NFTs from other users. Users can also follow NFTs creators.
+A flatiron school capstone project. This is a web application that allows users to share their upcoming NFTs with NFT enthusiasts. Users can also rate, like, and comment on NFTs from other users. Users can also follow NFTs creators.
 
 ## Technologies Used
 

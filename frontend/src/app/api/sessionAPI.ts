@@ -5,9 +5,27 @@ const SIGNUP_URL = "/users";
 const UPDATE_PROFILE_URL = "/users";
 const LOGOUT_URL = "/oauth/revoke";
 const CURRENT_USER_URL = "/users/me";
+const ADD_PROJECT_URL = "/projects";
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+
+export async function createProject(email: string, password: string) {
+  const data = {
+    email: email,
+    password: password,
+    client_id: CLIENT_ID,
+  };
+
+  return axios
+    .post(SIGNUP_URL, data)
+    .then((response: any) => {
+      return response.data;
+    })
+    .catch((error: any) => {
+      return error.response.data;
+    });
+}
 
 export async function createUserWithEmailAndPassword(
   email: string,

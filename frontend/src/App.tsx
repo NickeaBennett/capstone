@@ -9,6 +9,8 @@ import Logout from './app/features/sessions/Logout';
 import PersistLogin from './app/features/sessions/PersistLogin';
 import Signup from './app/features/sessions/Signup';
 import UpdateProfile from './app/features/sessions/UpdateProfile';
+import ProjectForm from './app/features/forms/ProjectForm';
+import Profile from './app/features/layouts/profile/Profile';
 
 function App() {
 
@@ -30,6 +32,16 @@ function App() {
               <Route path="/logout" element={
                 <PrivateRoute>
                   <Logout />
+                </PrivateRoute>
+              } />
+              <Route path="/add-project" element={
+                <PrivateRoute>
+                  <ProjectForm />
+                </PrivateRoute>
+              } />
+              <Route path="/profile" element={
+                <PrivateRoute>
+                  <Profile />
                 </PrivateRoute>
               } />
               <Route path="/update-profile" element={

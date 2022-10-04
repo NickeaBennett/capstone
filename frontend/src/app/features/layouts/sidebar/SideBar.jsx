@@ -45,7 +45,7 @@ function SideBar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/">
+          <ListItemButton component="a" href="/add-project">
             <ListItemIcon>
               <AddBox />
             </ListItemIcon>
