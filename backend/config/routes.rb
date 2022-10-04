@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   root 'pages#home'
+  # root 'projects#index'
 
   use_doorkeeper
   devise_for :users
   resources :projects
+  resources :tags
   resources :reviews
 
   draw :api

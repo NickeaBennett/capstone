@@ -8,9 +8,11 @@ namespace :api do
     end
     # resources :projects, param: :slugify
     resources :projects
+    resources :tags
     resources :reviews, only: [:create, :destroy]
 
     get '/users/me', to: 'users#me'
+    # get '*path', to: 'pages#index', via: :all
   end
 end
 

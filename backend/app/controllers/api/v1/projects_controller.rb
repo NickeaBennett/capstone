@@ -16,7 +16,7 @@ module Api
       # GET /projects/1 or /projects/1.json
       # GET /projects/:slug or /projects/:slug.json
       def show
-        # project = Project.find(params[:id])
+        project = Project.find(params[:id])
         render json: @project
         # render json: ProjectSerializer.new(@projects).serialized_json
       end
