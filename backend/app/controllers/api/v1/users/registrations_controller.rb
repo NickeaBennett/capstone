@@ -14,7 +14,7 @@ module Api
             return render json: { error: 'Client Not Found. Check Provided Client Id.' },
                           status: :unauthorized
           end
-
+ 
           allowed_params = user_params.except(:client_id)
           user = User.new(allowed_params)
 
