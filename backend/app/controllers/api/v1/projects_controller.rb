@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 module Api
   module V1
-    class ProjectsController < ApiController
+    # class ProjectsController < ApiController
+    class ProjectsController < ApplicationController
       before_action :set_project, only: %i[show edit update destroy]
 
       # GET /projects or /projects.json
