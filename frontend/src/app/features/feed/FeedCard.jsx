@@ -1,4 +1,10 @@
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import {
+  Comment,
+  Favorite,
+  FavoriteBorder,
+  Reviews,
+  Visibility,
+} from "@mui/icons-material";
 import {
   Avatar,
   Card,
@@ -14,22 +20,23 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { IProject } from "../../../types/data";
-import { useEffect, useState } from "react";
-import Axios from "../../api/axios";
+// import { useEffect, useState } from "react";
+// import Axios from "../../api/axios";
+// import Feed from "./Feed";
 
 import React from "react";
 
-const FeedCard = () => {
-  const [getProject, setProject] = useState([]);
-  useEffect(() => {
-    Axios.get("/projects")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+const FeedCard = (project) => {
+  // const [getProject, setProject] = useState([]);
+  // useEffect(() => {
+  //   Axios.get("/projects")
+  //     .then((res) => {
+  //       setProject(res.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <Card sx={{ margin: 5 }}>
@@ -44,20 +51,20 @@ const FeedCard = () => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        // title="Project name"
+        title={project.projectName}
+        subheader="Sale: September 14, 2023"
       />
       <CardMedia
         component="img"
         height="20%"
-        image="https://cdn.pixabay.com/photo/2022/02/18/16/09/ape-7020995_960_720.png"
+        // image="https://cdn.pixabay.com/photo/2022/02/18/16/09/ape-7020995_960_720.png"
+        image={project.imageUrl}
         alt="Bored Ape NFT"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {project.projectDesc}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -66,6 +73,15 @@ const FeedCard = () => {
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite sx={{ color: "red" }} />}
           />
+        </IconButton>
+        <IconButton aria-label="visibility">
+          <Visibility />
+        </IconButton>
+        <IconButton aria-label="comment">
+          <Comment />
+        </IconButton>
+        <IconButton aria-label="review">
+          <Reviews />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
