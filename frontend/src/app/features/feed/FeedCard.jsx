@@ -15,14 +15,14 @@ import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { IProject } from "../../../types/data";
 import { useEffect, useState } from "react";
-import Axios from "axios";
+import Instance from "../../api/axios";
 
 import React from "react";
 
 const FeedCard = () => {
   const [getProject, setProject] = useState([]);
   useEffect(() => {
-    Axios.get("/projects")
+    Instance.get("/projects")
       .then((res) => {
         console.log(res.data);
       })
