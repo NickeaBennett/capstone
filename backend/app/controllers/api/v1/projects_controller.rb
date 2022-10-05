@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module Api
   module V1
     class ProjectsController < ApiController
@@ -9,16 +8,23 @@ module Api
       def index
         @projects = Project.all
         render json: @projects
+        # render json: serializer(projects, options)
         # render json: serializer(projects, options).serialized_json
         # render json: ProjectSerializer.new(projects).serialized_json
+        # render json: ProjectSerializer.new(projects, options).serialized_json
       end
 
       # GET /projects/1 or /projects/1.json
       # GET /projects/:slug or /projects/:slug.json
       def show
-        project = Project.find(params[:id])
+        # project = Project.find(params[:id])
         render json: @project
+        # serializer: ProjectSerializer,
+        # include: [:reviews]
+        # render json: ProjectSerializer.new(projects, options).serialized_json
         # render json: ProjectSerializer.new(@projects).serialized_json
+        # render json: serializer.new(@projects).serialized_json
+        # render json: serializer(projects, options)
       end
 
       # GET /projects/new
@@ -103,7 +109,7 @@ module Api
         )
       end
       # def options
-      #   # @options ||= { include: %i[reviews tags] }
+      #   @options ||= { include: %i[reviews tags] }
       #   @options ||= { include: %i[reviews] }
       # end
     end

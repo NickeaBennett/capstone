@@ -54,15 +54,15 @@ function Login() {
         onClick={() => setShowPassword(!showPassword)}
         onMouseDown={() => setShowPassword(!showPassword)}
         edge="end">
-          {showPassword ? <Visibility /> : <VisibilityOff />}
+        {showPassword ? <Visibility /> : <VisibilityOff />}
       </IconButton>
     </InputAdornment>
   } />;
 
   return (
-    <section style={{marginTop:"2em"}}>
+    <section style={{ marginTop: "2em" }}>
       <Container maxWidth="md">
-        <Card sx={{boxShadow:1, maxWidth: 'md'}}>
+        <Card sx={{ boxShadow: 1, maxWidth: 'md' }}>
           <CardContent>
             <Container maxWidth="sm">
               <Typography variant="h2" color="text.primary" gutterBottom>
@@ -76,27 +76,27 @@ function Login() {
                     </p>
                   })}
                 </Alert>
-              : <></>} 
+                : <></>}
               <form onSubmit={handleSubmit}>
-                <FormGroup row={true} id="email-group" sx={{marginTop: "1em"}}>
+                <FormGroup row={true} id="email-group" sx={{ marginTop: "1em" }}>
                   <FormControl fullWidth>
-                    <InputLabel required htmlFor="email" id="email-label">Email Address</InputLabel>
-                    <Input id="email" type="email" inputRef={emailRef}/>
+                    <InputLabel required htmlFor="email" id="email-label">Email Address: admin@example.com</InputLabel>
+                    <Input id="email" type="email" inputRef={emailRef} />
                   </FormControl>
                 </FormGroup>
-                <FormGroup row={true} id="password-group" sx={{marginTop: "1em"}}>
+                <FormGroup row={true} id="password-group" sx={{ marginTop: "1em" }}>
                   <FormControl fullWidth>
-                    <InputLabel required htmlFor="password" id="password-label">Password</InputLabel>
+                    <InputLabel required htmlFor="password" id="password-label">Password: password</InputLabel>
                     {passwordInput}
                   </FormControl>
                 </FormGroup>
-                <FormGroup row={true} id="submit-group" sx={{marginTop: "1em"}}>
+                <FormGroup row={true} id="submit-group" sx={{ marginTop: "1em" }}>
                   <FormControl fullWidth>
-                    <Button 
-                      disabled={loading} 
-                      variant="contained" 
-                      color="primary" 
-                      type="submit" 
+                    <Button
+                      disabled={loading}
+                      variant="contained"
+                      color="primary"
+                      type="submit"
                       id="submit-button">Login</Button>
                   </FormControl>
                 </FormGroup>
@@ -104,10 +104,10 @@ function Login() {
             </Container>
           </CardContent>
           <Divider light={false} />
-          <CardActions sx={{marginTop: "1em", justifyContent: 'center' }} disableSpacing >
+          <CardActions sx={{ marginTop: "1em", justifyContent: 'center' }} disableSpacing >
             <Box>
               <Typography variant="body2" color="text.secondary" align="center">
-                  <Link to="/forgot-password">Forgot Password?</Link>
+                <Link to="/forgot-password">Forgot Password?</Link>
               </Typography>
               <Link to="/signup">Create an Account!</Link>
             </Box>

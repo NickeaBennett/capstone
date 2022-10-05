@@ -4,7 +4,7 @@ end
 
 user = User.first_or_create([
   {
-    email: 'nickea@example.com',
+    email: 'admin@example.com',
     password: 'password',
     password_confirmation: 'password',
     role: User.roles[:admin]
