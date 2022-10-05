@@ -46,7 +46,7 @@ project = Project.first_or_create([
     project_sale_date: '2021-10-01 00:00:00',
     minting_contract_address: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb',
     project_blockchain: 'Ethereum',
-    user_id: 1
+    user_id: 2
   }
 ])
 
@@ -56,7 +56,7 @@ review = Review.first_or_create([
     description: 'Bored Apes are the best',
     score: 4,
     user_id: 1,
-    project_id: 1
+    project_id: 2
   },
   {
     title: 'CryptoPunks are the best',
