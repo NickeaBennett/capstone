@@ -7,8 +7,6 @@ A flatiron school capstone project. This is a web application that allows users 
 - Backend
 
   - Ruby On Rails
-  - Devise
-  - Doorkeeper
   - Active Model Serializers
   - PostgreSQL
 
@@ -17,7 +15,6 @@ A flatiron school capstone project. This is a web application that allows users 
   - Redux
   - Axios
   - JavaScript
-  - Typescript
   - Material UI
   - React Router
   - React Hooks

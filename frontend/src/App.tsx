@@ -9,7 +9,7 @@ import Logout from './app/features/sessions/Logout';
 import PersistLogin from './app/features/sessions/PersistLogin';
 import Signup from './app/features/sessions/Signup';
 import UpdateProfile from './app/features/sessions/UpdateProfile';
-import ProjectForm from './app/features/forms/AddProjectForm';
+
 import Profile from './app/features/layouts/profile/Profile';
 import EditProjectForm from './app/features/forms/EditProjectForm';
 import Explore from './app/features/layouts/explore/Explore';
@@ -38,7 +38,7 @@ function App() {
               } />
               <Route path="/add-project" element={
                 <PrivateRoute>
-                  <ProjectForm />
+                  {/* <ProjectForm /> */}
                 </PrivateRoute>
               } />
               <Route path="/explore" element={

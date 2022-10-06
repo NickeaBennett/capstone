@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IProject } from "../../../types/data";
+// import { IProject } from "../../../types/data";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -23,7 +23,7 @@ const EditProjectForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async () => {
-        const projectData: IProject = {
+        const projectData = {
             project_name,
             project_description,
             image_url,
