@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginForm from '../forms/LoginForm';
-import SignUpForm from '../forms/SignUpForm';
+import LoginForm from '../../forms/LoginForm';
+import SignUpForm from '../../forms/SignUpForm';
 import { useState } from 'react';
 
 function Login({ onLogin }) {

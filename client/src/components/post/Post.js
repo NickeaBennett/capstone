@@ -44,7 +44,7 @@ function Post() {
         <NewComment post={post} />
       </div>
       <div>
-        <button className='btn' onClick={handleDelete}>Delete post</button>
+        <button className='btn' onClick={handleDelete}>Delete project</button>
       </div>
     </div>
   );

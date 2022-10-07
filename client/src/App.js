@@ -13,8 +13,9 @@ import Explore from '../../client/src/components/pages/explore/Explore';
 
 
 import Navbar from './components/layout/navbar/Navbar';
-import Login from './components/pages/Login';
-import MainFeed from './components/feed/MainFeed';
+import Login from './components/pages/login/Login';
+// import MainFeed from './components/feed/MainFeed';
+import Feed from './components/feed/Feed';
 import NewPost from './components/post/NewPost';
 import Profile from './components/user/UserProfile';
 import Post from './components/post/Post';
@@ -37,17 +38,17 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        {/* <Navbar user={user} setUser={setUser} /> */}
+      {/* <Router>
+        <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/posts" element={<MainFeed user={user} />}></Route>
-          <Route path="/new" element={<NewPost user={user} />}></Route>
+          <Route path="/new" element={<NewPost user={user} />}></Route> 
           <Route path="/me" element={<Profile user={user} />}></Route>
           <Route path="/users/:id" element={<User />}></Route>
           <Route path="/posts/:id" element={<Post user={user} />}></Route>
           <Route path="/me/edit" element={<EditProfile user={user} />}></Route>
         </Routes>
-      </Router>
+      </Router> */}
 
       <div className="App">
         <Router>
@@ -56,33 +57,24 @@ function App() {
           </header>
           <main>
             <Routes>
-              <Route path="/" element={
-                <Dashboard />
-              } />
+              <Route path="/" element={<Dashboard user={user} />} />
+
               {/* <Route path="/logout" element={
                 <Logout />
-              } /> */}
-              {/* <Route path="/add-project" element={
-                 <ProjectForm /> 
-              } />
-              <Route path="/explore" element={
-                <Explore />
-              } />
-              <Route path="/edit-project" element={
-                <EditProjectForm />
-              } />
-              <Route path="/profile" element={
-                <Profile />
-              } />
-              <Route path="/update-profile" element={
-                <UpdateProfile />
-              } />
-              <Route path="/login" element={
-                <Login />
-              } />
-              <Route path="/signup" element={
-                <Signup />
-              } /> */}
+              } />  */}
+              <Route path="/new" element={<NewPost user={user} />} />
+              <Route path="/me" element={<Profile user={user} />}></Route>
+              <Route path="/me/edit" element={<EditProfile user={user} />}></Route>
+              <Route path="/users/:id" element={<User />}></Route>
+              <Route path="/posts" element={<Feed user={user} />}></Route>
+              <Route path="/posts/:id" element={<Post user={user} />}></Route>
+              <Route path="/explore" element={<Explore />} />
+
+              {/* <Route path="/edit-project" element={<EditProjectForm />} />
+              <Route path="/profile" element={ <Profile />} />
+              <Route path="/update-profile" element={<UpdateProfile /> } />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} /> */}
             </Routes>
           </main>
         </Router>

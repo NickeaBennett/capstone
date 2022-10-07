@@ -37,7 +37,7 @@ function SideBar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/profile">
+          <ListItemButton component="a" href="/me">
             <ListItemIcon>
               <InsertEmoticon />
             </ListItemIcon>
@@ -45,7 +45,7 @@ function SideBar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/add-project">
+          <ListItemButton component="a" href="/new">
             <ListItemIcon>
               <AddBox />
             </ListItemIcon>
@@ -53,7 +53,7 @@ function SideBar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/update-profile">
+          <ListItemButton component="a" href="/me/edit">
             <ListItemIcon>
               <Settings />
             </ListItemIcon>
