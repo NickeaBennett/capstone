@@ -9,26 +9,6 @@ import Post from './components/Post';
 import User from './components/User';
 import EditProfile from './components/EditProfile';
 
-{/*
-  TODO:
-    ACTIVE MAILER[X?]
-    LODESTONE API STUFF[x]
-    CHARACTER DATA FROM LODESTONE
-    FOLLOWER ALIASING[X?]
-    ONLY FOLLOWER POSTS
-    ABILITY TO ONLY DELETE OWNED POSTS[x]
-    TAILWIND CSS OR STYLED COMPONENTS CSS
-    IMAGE UPLOADING VS IMAGE URLS
-      -ACTIVESTORAGE
-    NEWS FROM LODESTONE[X]
-    SEARCHBAR?
-    COMMENT SECTIONS[X]
-      -CRUD ACTIONS FOR COMMENTS
-    LIKES BUTTON
-    MESSENGER? ACTION CABLE
-    FIX MARGINS AND LAYOUT FOR DIFFERENT RESOLUTIONS
-    XXXXXXX
-*/}
 
 function App() {
   const [user, setUser] = useState(null)
