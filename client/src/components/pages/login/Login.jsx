@@ -25,7 +25,7 @@ function Login({ onLogin }) {
                 ) : (
                     <>
                         <SignUpForm onLogin={onLogin} />
-                        <divider />
+                        {/* <divider /> */}
                         <p>
                             Not new?
                             <button color="secondary" onClick={() => setShowLogin(true)}>
