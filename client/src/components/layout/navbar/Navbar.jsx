@@ -48,8 +48,17 @@ const UserBox = styled(Box)(({ theme }) => ({
     display: "none",
   },
 }));
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
   const [open, setOpen] = useState(false);
+
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -102,9 +111,11 @@ const Navbar = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Profile</MenuItem>
+        <MenuItem component="a" href="/me">
+          Profile
+        </MenuItem>
         <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
       </Menu>
     </AppBar>
   );

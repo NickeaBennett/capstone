@@ -1,12 +1,7 @@
-
-// import Sidebar from "./components/layout/sidebar/Sidebar";
-// import Rightbar from "./components/layout/rightbar/Rightbar";
-// import Add from "./components/post/Add";
 import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
-// import Feed from "./components/feed/Feed";
 import Navbar from "./components/layout/navbar/Navbar";
 import { useState, useEffect } from 'react';
-import Login from "./components/pages/login/Login";
+import Auth from "./components/pages/auth/AuthPage";
 import User from "./components/user/User";
 import NewPost from "./components/post/Add";
 import Post from "./components/post/Post";
@@ -37,19 +32,11 @@ function App() {
   }, [])
 
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return <Auth onLogin={setUser} />;
 
   return (
     <ThemeProvider theme={darkTheme}>
       <Navbar user={user} setUser={setUser} />
-      {/* <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Sidebar setMode={setMode} mode={mode} />
-          <Feed />
-          <Rightbar />
-        </Stack>
-        <Add />
-      </Box> */}
       <Router>
         <Routes>
           <Route path="/" element={<Home user={user} />}></Route>
@@ -65,5 +52,4 @@ function App() {
     </ThemeProvider>
   );
 }
-
 export default App;

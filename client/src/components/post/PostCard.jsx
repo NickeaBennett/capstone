@@ -81,7 +81,7 @@ function PostCard() {
                 <h2>{project.title}</h2>
                 <CardMedia
                   component="img"
-                  height="10%"
+                  height="20%"
                   image={project.image_url}
                   alt={project.title}
                 />

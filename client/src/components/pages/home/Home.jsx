@@ -10,13 +10,13 @@ function Home() {
   const [user, setUser] = useState(null);
 
   return (
-    // <Box bgcolor={"background.default"} color={"text.primary"}>
-    <Stack direction="row" spacing={2} justifyContent="space-between">
-      <Sidebar setMode={setMode} mode={mode} />
-      <Feed />
-      <Rightbar />
-    </Stack>
-    // </Box>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Sidebar setMode={setMode} mode={mode} />
+        <Feed />
+        <Rightbar />
+      </Stack>
+    </Box>
   );
 }
 
