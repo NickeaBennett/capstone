@@ -1,58 +1,63 @@
-import { Favorite, FavoriteBorder, MoreVert, Share } from "@mui/icons-material";
-import {
-  Avatar,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Checkbox,
-  IconButton,
-  Typography,
-} from "@mui/material";
-const Post = () => {
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import CommentFeed from "../comments/CommentFeed";
+import NewComment from "../comments/NewComment";
+
+function Post() {
+  const [post, setPost] = useState("");
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(`/posts/${id}`)
+      .then((r) => r.json())
+      .then(setPost);
+  }, []);
+
+  function handleDelete(e) {
+    e.preventDefault();
+    fetch(`/posts/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((r) => {
+      if (r.ok) {
+        navigate("/posts");
+      } else {
+        r.json();
+      }
+    });
+  }
+
   return (
-    <Card sx={{ margin: 5 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVert />
-          </IconButton>
-        }
-        title="John Doe"
-        subheader="September 14, 2022"
-      />
-      <CardMedia
-        component="img"
-        height="20%"
-        image="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        alt="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <Checkbox
-            icon={<FavoriteBorder />}
-            checkedIcon={<Favorite sx={{ color: "red" }} />}
-          />
-        </IconButton>
-        <IconButton aria-label="share">
-          <Share />
-        </IconButton>
-      </CardActions>
-    </Card>
+    <div className="comment-body">
+      <div className="post-head">
+        <h1>{post.title}</h1>
+      </div>
+      <img
+        src={post.image_url}
+        width="960"
+        height="540"
+        alt="This is a post"
+      ></img>
+      <div className="container">
+        <p className="caption">{post.text}</p>
+      </div>
+      <div className="div-feed">
+        <CommentFeed />
+      </div>
+      <div>
+        <NewComment post={post} />
+      </div>
+      <div>
+        <button className="btn" onClick={handleDelete}>
+          Delete post
+        </button>
+      </div>
+    </div>
   );
-};
+}
 
 export default Post;

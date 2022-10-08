@@ -1,6 +1,7 @@
 import { Box, Stack, Skeleton } from "@mui/material";
 import React, { useState } from "react";
-import Post from "../post/Post";
+// import Post from "../post/Post";
+import PostCard from "../post/PostCard";
 
 const Feed = () => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const Feed = () => {
         </Stack>
       ) : (
         <>
-          <Post />
+          <PostCard />
         </>
       )}
     </Box>
