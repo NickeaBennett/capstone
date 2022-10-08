@@ -7,6 +7,8 @@ import {
   Person,
   Settings,
   Storefront,
+  Search,
+  AddBox,
 } from "@mui/icons-material";
 import {
   Box,
@@ -35,7 +37,7 @@ const Sidebar = ({ mode, setMode }) => {
           <ListItem disablePadding>
             <ListItemButton component="a" href="/explore">
               <ListItemIcon>
-                <Article />
+                <Search />
               </ListItemIcon>
               <ListItemText primary="Explore" />
             </ListItemButton>
@@ -43,7 +45,7 @@ const Sidebar = ({ mode, setMode }) => {
           <ListItem disablePadding>
             <ListItemButton component="a" href="/new">
               <ListItemIcon>
-                <Group />
+                <AddBox />
               </ListItemIcon>
               <ListItemText primary="Project" />
             </ListItemButton>

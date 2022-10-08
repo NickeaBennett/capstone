@@ -18,7 +18,8 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
+// import uuid from "uuid";
+import uuid from "react-uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { setPost } from "../../postsSlice";
 import { Link } from "react-router-dom";
@@ -26,11 +27,19 @@ import { Link } from "react-router-dom";
 function PostCard() {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  const [users, setUsers] = useState([]);
+  //   const key_id = uuid();
 
   useEffect(() => {
     fetch("/posts")
       .then((r) => r.json())
       .then((posts) => dispatch(setPost(posts)));
+  }, []);
+
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then(setUsers);
   }, []);
 
   console.log(posts.data);
@@ -39,17 +48,26 @@ function PostCard() {
     <div className="div-newhome">
       <div>
         {posts.map((post) => (
-          <div>
+          <div key={uuid()}>
             {post.map((project) => (
-              <Card key={project.id} sx={{ margin: 5 }}>
+              <Card key={uuid()} sx={{ margin: 5 }}>
                 <CardHeader
                   avatar={
-                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-                      <img
-                        src={project.user.image_url}
-                        width="75px"
-                        height="75px"
-                      ></img>
+                    <Avatar
+                      key={uuid()}
+                      sx={{ bgcolor: "red" }}
+                      aria-label="recipe"
+                    >
+                      {users.map((user) => (
+                        <Link key={uuid()} to={`/users/${project.user.id}`}>
+                          <img
+                            key={uuid()}
+                            src={project.user.image_url}
+                            width="75px"
+                            height="75px"
+                          ></img>
+                        </Link>
+                      ))}
                     </Avatar>
                   }
                   action={
