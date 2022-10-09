@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function NewPost() {
   const [title, setTitle] = useState("");
@@ -9,6 +10,8 @@ function NewPost() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+
+  const { id } = useParams();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +29,7 @@ function NewPost() {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        navigate("/posts");
+        navigate(`/posts/${id}`);
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

@@ -28,27 +28,32 @@ function Login({ onLogin }) {
   }
 
   return (
-    <div className="auth-form-container">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">Username</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Add your username"
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="********"
-        />
-        <button type="submit">{isLoading ? "Loading..." : "Sign up"}</button>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <formfield>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </formfield>
+        <formfield>
+          <input
+            type="password"
+            id="password"
+            autoComplete="off"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </formfield>
+        <formfield>
+          <button variant="fill" color="primary" type="submit">
+            {isLoading ? "Loading..." : "Login"}
+          </button>
+        </formfield>
         <div>
           {errors.map((err) => (
             <error key={err}>{err}</error>
@@ -58,4 +63,5 @@ function Login({ onLogin }) {
     </div>
   );
 }
+
 export default Login;

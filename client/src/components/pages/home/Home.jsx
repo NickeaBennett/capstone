@@ -3,7 +3,7 @@ import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import Sidebar from "../../layout/sidebar/Sidebar";
 import Feed from "../../feed/Feed";
 import Rightbar from "../../layout/rightbar/Rightbar";
-import Add from "../../post/Add";
+import Add from "../../post/CreatePost";
 
 function Home() {
   const [mode, setMode] = useState("light");

@@ -3,8 +3,9 @@ import Navbar from "./components/layout/navbar/Navbar";
 import { useState, useEffect } from 'react';
 import Auth from "./components/pages/auth/AuthPage";
 import User from "./components/user/User";
-import NewPost from "./components/post/Add";
+import NewPost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
+import PostProfile from "./components/post/PostProfile";
 import UserProfile from "./components/user/UserProfile";
 import EditProfile from "./components/user/EditProfile";
 import Explore from "./components/pages/explore/Explore";
@@ -39,12 +40,13 @@ function App() {
       <Navbar user={user} setUser={setUser} />
       <Router>
         <Routes>
+          {/* <Route path="/post-profile" element={<PostProfile user={user} />}></Route> */}
           <Route path="/" element={<Home user={user} />}></Route>
-          {/* <Route path="/posts" element={<Feed user={user} />}></Route> */}
           <Route path="/new" element={<NewPost user={user} />}></Route>
           <Route path="/me" element={<UserProfile user={user} />}></Route>
           <Route path="/users/:id" element={<User />}></Route>
-          <Route path="/posts/:id" element={<Post user={user} />}></Route>
+          {/* <Route path="/posts/:id" element={<Post user={user} />}></Route> */}
+          <Route path="/posts/:id" element={<PostProfile user={user} />}></Route>
           <Route path="/me/edit" element={<EditProfile user={user} />}></Route>
           <Route path="/explore" element={<Explore user={user} />}></Route>
         </Routes>
