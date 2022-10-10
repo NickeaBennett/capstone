@@ -1,3 +1,4 @@
+import { Box, Button, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 function Login({ onLogin }) {
@@ -28,39 +29,36 @@ function Login({ onLogin }) {
   }
 
   return (
-    <div>
+    <Stack direction="row" alignItems="center" spacing={2}>
       <form onSubmit={handleSubmit}>
-        <formfield>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            autoComplete="off"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </formfield>
-        <formfield>
-          <input
-            type="password"
-            id="password"
-            autoComplete="off"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </formfield>
-        <formfield>
-          <button variant="fill" color="primary" type="submit">
-            {isLoading ? "Loading..." : "Login"}
-          </button>
-        </formfield>
+        <label htmlFor="username">Username</label>
+        <TextField
+          required
+          type="text"
+          id="username"
+          autoComplete="off"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label htmlFor="username">Password</label>
+        <TextField
+          required
+          type="password"
+          id="password"
+          autoComplete="off"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button variant="fill" color="primary" type="submit">
+          {isLoading ? "Loading..." : "Login"}
+        </Button>
         <div>
           {errors.map((err) => (
             <error key={err}>{err}</error>
           ))}
         </div>
       </form>
-    </div>
+    </Stack>
   );
 }
 

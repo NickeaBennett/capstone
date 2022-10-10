@@ -9,11 +9,15 @@ import {
   ListItemText,
   Avatar,
   Typography,
+  IconButton,
 } from "@mui/material";
+import { Box } from "@mui/system";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function CommentFeed() {
   const [comments, setComments] = useState([]);
   const [post, setPost] = useState("");
+  const [deleteComment, setDeleteComment] = useState("");
 
   const { id } = useParams();
 
@@ -29,54 +33,60 @@ function CommentFeed() {
       .then(setComments);
   }, []);
 
+  function handleDelete(e) {
+    e.preventDefault();
+    fetch(`/posts/${id}/comments/${id}`, {
+      // fetch(`posts/comments/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((r) => {
+      if (r.ok) {
+        // navigate("/me");
+      } else {
+        r.json();
+      }
+    });
+    console.log(id);
+  }
+
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-      {comments.map((comment) => (
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={comment.user.image_url} />
-          </ListItemAvatar>
-          <ListItemText
-            primary={comment.user.username}
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  {comment.text}
-                </Typography>
-                {/* {" — I'll be in your neighborhood doing errands this…"} */}
-              </React.Fragment>
+    <Box sx={{ m: 2, p: 5 }}>
+      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+        {comments.map((comment) => (
+          <ListItem
+            key={comment.id}
+            alignItems="flex-start"
+            secondaryAction={
+              <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
+                <DeleteIcon />
+              </IconButton>
             }
-          />
-        </ListItem>
-      ))}
-    </List>
-    // <div className="comment">
-    //   <ol className="comment-body">
-    //     {comments.map((comment) => (
-    //       <li key={comment.id} className="task">
-    //         <h3>{comment.user.username}</h3>
-    //         <img
-    //           src={comment.user.image_url}
-    //           alt="profile picture"
-    //           style={{ width: "75px", height: "75px" }}
-    //         ></img>
-    //         <br></br>
-    //         <br></br>
-    //         {comment.text}
-    //         <br></br>
-    //         ______________________________
-    //         <br></br>
-    //         Post created at:{" "}
-    //         {format(new Date(comment.created_at), "yyyy/MM/dd kk:mm:ss")}
-    //       </li>
-    //     ))}
-    //   </ol>
-    // </div>
+          >
+            <Divider />
+            <ListItemAvatar>
+              <Avatar alt="Remy Sharp" src={comment.user.image_url} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={comment.user.username}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    {comment.text}
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 }
 

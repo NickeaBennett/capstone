@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  #follower logic
+  #follower 
   post '/users/:id/follow', to: "users#follow"
   post '/users/:id/unfollow', to: "users#unfollow"
 

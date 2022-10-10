@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setPost } from "../../postsSlice";
+import { v4 as uuid } from "uuid";
 
 import {
   Favorite,
@@ -24,7 +25,9 @@ import {
 
 const PostCard = () => {
   const posts = useSelector((state) => state.posts);
+  const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
+  const keyId = uuid();
 
   useEffect(() => {
     fetch("/posts")
@@ -32,13 +35,19 @@ const PostCard = () => {
       .then((posts) => dispatch(setPost(posts)));
   }, []);
 
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then(setUsers);
+  }, []);
+
   return (
-    <Card sx={{ margin: 5 }}>
+    <Card>
       {/* <div> */}
       {posts.map((post) => (
-        <div>
+        <div key={keyId}>
           {post.map((project) => (
-            <Card key={project.id} className="task">
+            <Card key={project.id} sx={{ margin: 5 }}>
               <CardHeader
                 avatar={
                   <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

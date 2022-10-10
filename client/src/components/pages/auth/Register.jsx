@@ -1,3 +1,4 @@
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 function Register({ onLogin }) {
@@ -36,46 +37,48 @@ function Register({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        autoComplete="off"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <label htmlFor="email">Email</label>
-      <input
-        type="text"
-        id="email"
-        autoComplete="off"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        autoComplete="current-password"
-      />
-      <label htmlFor="password">Password Confirmation</label>
-      <input
-        type="password"
-        id="password_confirmation"
-        value={passwordConfirmation}
-        onChange={(e) => setPasswordConfirmation(e.target.value)}
-        autoComplete="current-password"
-      />
-      <button type="submit">{isLoading ? "Loading..." : "Sign up"}</button>
-      <div>
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))}
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <TextField
+          type="text"
+          id="username"
+          autoComplete="off"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label htmlFor="email">Email</label>
+        <TextField
+          type="text"
+          id="email"
+          autoComplete="off"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="password">Password</label>
+        <TextField
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+        />
+        <label htmlFor="password">Password Confirmation</label>
+        <TextField
+          type="password"
+          id="password_confirmation"
+          value={passwordConfirmation}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+          autoComplete="current-password"
+        />
+        <Button type="submit">{isLoading ? "Loading..." : "Sign up"}</Button>
+        <div>
+          {errors.map((err) => (
+            <error key={err}>{err}</error>
+          ))}
+        </div>
+      </form>
+    </div>
   );
 }
 

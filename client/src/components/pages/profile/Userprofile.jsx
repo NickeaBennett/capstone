@@ -1,11 +1,12 @@
+import { Container } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function UserProfile({ user }) {
   return (
-    <div>
+    <Container>
       <div
-        style={{
+        sx={{
           width: "80%",
           margin: "0 auto",
           display: "flex",
@@ -44,7 +45,7 @@ function UserProfile({ user }) {
           Edit User Profile
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
 

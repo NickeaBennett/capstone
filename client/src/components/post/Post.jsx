@@ -37,7 +37,7 @@ function Post() {
       },
     }).then((r) => {
       if (r.ok) {
-        navigate("/me");
+        navigate("/");
       } else {
         r.json();
       }

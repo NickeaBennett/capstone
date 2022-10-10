@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
 function NewComment({ post }) {
   const [text, setText] = useState("");
@@ -30,30 +33,63 @@ function NewComment({ post }) {
       }
     });
   }
-
   return (
-    <div className="comment-body">
-      <h3>Create Comment</h3>
+    <Box>
       <form onSubmit={handleSubmit} id={post.id}>
         <label htmlFor="text"></label>
-        <textarea
+        <TextField
+          fullWidth
+          label="fullWidth"
+          // id="fullWidth"
+          multiline
           type="text"
           id="text"
-          rows="10"
+          rows="2"
+          maxRows={4}
           placeholder="Comment here..."
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit" className="btn">
+        <Button type="submit" className="btn">
           Submit
-        </button>
+        </Button>
         <div>
           {errors.map((err) => (
             <error key={err}>{err}</error>
           ))}
         </div>
       </form>
-    </div>
+    </Box>
   );
+  // return (
+  //   <Box
+  //     sx={{
+  //       m: 2,
+  //       p: 5,
+  //       width: 500,
+  //       maxWidth: "100%",
+  //     }}
+  //   >
+  //     <form onSubmit={handleSubmit} id={post.id}>
+  //       <label htmlFor="text"></label>
+  //       <TextField
+  //         fullWidth
+  //         required
+  //         label="comment"
+  //         type="text"
+  //         id="text"
+  //         rows="10"
+  //         placeholder="Comment here..."
+  //         onChange={(e) => setText(e.target.value)}
+  //       />
+  //       <Button>Add comment</Button>
+  //       <div>
+  //         {errors.map((err) => (
+  //           <error key={err}>{err}</error>
+  //         ))}
+  //       </div>
+  //     </form>
+  //   </Box>
+  // );
 }
 
 export default NewComment;

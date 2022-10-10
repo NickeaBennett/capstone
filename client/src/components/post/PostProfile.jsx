@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CommentFeed from "../comments/CommentFeed";
 import NewComment from "../comments/NewComment";
-import { Divider } from "@mui/material";
+import { Container, Divider } from "@mui/material";
 
 function PostProfile() {
   const [post, setPost] = useState("");
@@ -32,7 +32,7 @@ function PostProfile() {
       },
     }).then((r) => {
       if (r.ok) {
-        navigate("/posts");
+        navigate("/");
       } else {
         r.json();
       }
@@ -40,38 +40,35 @@ function PostProfile() {
   }
 
   return (
-    <Card sx={{ maxWidth: "100%" }}>
-      <CardMedia
-        component="img"
-        height="500"
-        image={post.image_url}
-        alt={post.title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          <h1>{post.title}</h1>
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {post.text}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" onClick={handleDelete}>
-          Delete
-        </Button>
-        <Button size="small">Edit</Button>
-      </CardActions>
-      <Divider />
-      <div>
-        <Divider variant="inset" />
+    <Container sx={{ maxWidth: "100%" }}>
+      <Card>
+        <CardMedia
+          component="img"
+          height="500"
+          image={post.image_url}
+          alt={post.title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            <h1>{post.title}</h1>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {post.text}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={handleDelete}>
+            Delete
+          </Button>
+          <Button size="small">Edit</Button>
+        </CardActions>
+        <Divider />
         <CommentFeed />
-        <Divider variant="inset" />
-      </div>
-      <div>
+        <Divider />
         <Divider variant="inset" />
         <NewComment post={post} />
-      </div>
-    </Card>
+      </Card>
+    </Container>
   );
 }
 
