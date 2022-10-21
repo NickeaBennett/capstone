@@ -50,13 +50,15 @@ const PostCard = () => {
             <Card key={project.id} sx={{ margin: 5 }}>
               <CardHeader
                 avatar={
-                  <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-                    <img
-                      src={project.user.image_url}
-                      width="75px"
-                      height="75px"
-                    ></img>
-                  </Avatar>
+                  <Link to={`/users/${project.user.id}`}>
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                      <img
+                        src={project.user.image_url}
+                        width="75px"
+                        height="75px"
+                      ></img>
+                    </Avatar>
+                  </Link>
                 }
                 action={
                   <IconButton aria-label="settings">
