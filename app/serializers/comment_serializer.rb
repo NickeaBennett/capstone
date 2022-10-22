@@ -3,4 +3,6 @@ class CommentSerializer < ActiveModel::Serializer
 
   has_one :post
   has_one :user
+  # has_many :post
+  # has_many :user
 end

@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
     has_many :comments, dependent: :destroy
     has_many :posts, dependent: :destroy
+    has_many :artworks, as: :imageable
+    
 
 
      # Will return an array of follows for the given user instance
